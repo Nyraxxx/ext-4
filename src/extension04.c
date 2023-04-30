@@ -132,37 +132,31 @@ void matrix_scale(int16_t* matrix_a, uint8_t* dim, int16_t multiplicand, int16_t
 void matrix_mul(int16_t* matrix_a, uint8_t* dim_a, int16_t* matrix_b, uint8_t* dim_b, int16_t* result)
 {
     for (uint8_t i = 0; i < dim_a[0]; i++) { // row of mat_a
-        for (uint8_t j = 0; j < dim_a[1]; j++) { // col of mat_a
+        for (uint8_t l = 0; l < dim_b[1]; l++) { // col of mat_b
+            uint8_t c = i*dim_b[1]+l; 
 
-            for (uint8_t k = 0; k < dim_b[0]; k++) { // row of mat_b
-                for (uint8_t l = 0; l < dim_b[1]; l++) { // col of mat_b
-                    uint8_t c = i*dim_b[1]+l; 
+            int16_t temp = 0; // intermediate sum
 
-                    int16_t temp = 0; // intermediate sum
+            for (uint8_t m = 0; m < dim_a[1]; m++) {
+                /*
+                    1) l = 0, m = 0 => 0
+                    2) l = 0, m = 1 => 3
+                    3) l = 1, m = 0 => 1
+                    4) l = 1, m = 1 => 4
 
-                    for (uint8_t m = 0; m < dim_a[1]; m++) {
-                        /*
-                            1) l = 0, m = 0 => 0
-                            2) l = 0, m = 1 => 3
-                            3) l = 1, m = 0 => 1
-                            4) l = 1, m = 1 => 4
+                    m * dim_b[1] + l
+                */
 
-                            m * dim_b[1] + l
-                        */
-
-                        /*
-                            1) i = 0, m = 0 => 0
-                            2) i = 0, m = 1 => 1
-                            3) i = 1, m = 0 => 2
-                            4) i = 1, m = 1 => 3
-                        */
-                        temp += *(matrix_a + (m + i*dim_a[0])) * *(matrix_b + (m * dim_b[1] + l)); // ur_mum;
-                    }
-
-                    *(result + c) = temp;
-                }
+                /*
+                    1) i = 0, m = 0 => 0
+                    2) i = 0, m = 1 => 1
+                    3) i = 1, m = 0 => 2
+                    4) i = 1, m = 1 => 3
+                */
+                temp += *(matrix_a + (m + i*dim_a[0])) * *(matrix_b + (m*dim_b[1] + l)); 
             }
 
+            *(result + c) = temp;
         }
     }
 }
