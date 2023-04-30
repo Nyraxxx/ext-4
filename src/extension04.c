@@ -94,16 +94,16 @@
 // code to call the functions you write, and print matricies via the serial interface.
 // main.c will be replaced by our own test code when we test your functions.
 
-void matrix_sum(int16_t input_array[], uint8_t dimension[], int16_t output_array[])
-{
+//void matrix_sum(int16_t input_array[], uint8_t dimension[], int16_t output_array[])
 
-}
+
+
 void matrix_add(int16_t* matrix_a, uint8_t* dim, int16_t addend, int16_t* result)
 {
     for (uint8_t i = 0; i < dim[0]; i++) {
         for (uint8_t j = 0; j < dim[1]; j++) {
             uint8_t c = i*dim[1]+j; // from main.c
-            *(result + c) = matrix_a[i][j] + addend;
+            *(result + c) = *(matrix_a + c) + addend;
         }
     }
 }
