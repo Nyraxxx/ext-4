@@ -104,9 +104,11 @@ void matrix_add(int16_t* matrix_a, uint8_t* dim, int16_t addend, int16_t* result
         for (uint8_t j = 0; j < dim[1]; j++) {
             uint8_t c = i*dim[1]+j; // from main.c
             *(result + c) = *(matrix_a + c) + addend;
+            
         }
     }
 }
+//
 //void matrix_scale(void)
 //void matrix_mul(void)  
 // Write your code for Ex E4.0 above this line.
