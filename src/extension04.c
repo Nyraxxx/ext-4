@@ -95,7 +95,9 @@
 // main.c will be replaced by our own test code when we test your functions.
 
 void matrix_sum(int16_t input_array[], uint8_t dimension[], int16_t output_array[])
-{}
+{
+
+}
 
 
 
@@ -110,6 +112,16 @@ void matrix_add(int16_t* matrix_a, uint8_t* dim, int16_t addend, int16_t* result
     }
 }
 
-void matrix_scale(void){}
-void matrix_mul(void)  {}
+void matrix_scale(int16_t* matrix_a, uint8_t* dim, int16_t multiplicand, int16_t* result)
+{
+    for (uint8_t i = 0; i < dim[0]; i++) {
+        for (uint8_t j = 0; j < dim[1]; j++) {
+            uint8_t c = i*dim[1]+j; // from main.c
+            *(result + c) = *(matrix_a + c) * multiplicand;
+        }
+    }
+}
+void matrix_mul(void)  {
+
+}
 // Write your code for Ex E4.0 above this line.
