@@ -94,7 +94,8 @@
 // code to call the functions you write, and print matricies via the serial interface.
 // main.c will be replaced by our own test code when we test your functions.
 
-//void matrix_sum(int16_t input_array[], uint8_t dimension[], int16_t output_array[])
+void matrix_sum(int16_t input_array[], uint8_t dimension[], int16_t output_array[])
+{}
 
 
 
@@ -108,7 +109,7 @@ void matrix_add(int16_t* matrix_a, uint8_t* dim, int16_t addend, int16_t* result
         }
     }
 }
-//
-//void matrix_scale(void)
-//void matrix_mul(void)  
+
+void matrix_scale(void){}
+void matrix_mul(void)  {}
 // Write your code for Ex E4.0 above this line.
