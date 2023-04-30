@@ -128,7 +128,19 @@ void matrix_scale(int16_t* matrix_a, uint8_t* dim, int16_t multiplicand, int16_t
         }
     }
 }
-void matrix_mul(void)  {
 
+void matrix_mul(int16_t* matrix_a, uint8_t* dim_a, int16_t* matrix_b, uint8_t* dim_b, int16_t* result)
+{
+    for (uint8_t i = 0; i < dim_a[0]; i++) {
+        for (uint8_t j = 0; j < dim_a[1]; j++) {
+            // outer loop for mat a
+
+            for (uint8_t k = 0; k < dim_b[0]; k++) {
+                for (uint8_t l = 0; l < dim_b[1]; l++) {
+                    // inner loop for mat b
+                }
+            }
+        }
+    }
 }
 // Write your code for Ex E4.0 above this line.
